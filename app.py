@@ -131,12 +131,12 @@ def main():
         st.markdown(text1)
         st.image("output1.png")
         st.markdown(text2)
-        st.image("output2.png")
+        st.image("output3.png")
         st.markdown(text3)
         st.markdown("""
             <p style="font-size: 16px; font-weight: bold">Mengatasi Imbalance Dataset</p>
             """, unsafe_allow_html=True)
-        st.image("output3.png")
+        st.image("output2.png")
         st.markdown(text4)
 
     elif choice == "Machine Learning":
