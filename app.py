@@ -9,7 +9,10 @@ with open('final_model.pkl','rb') as file:
 
 def main():
     # stc.html(html_temp)
-    st.title("Customer Churn Prediction App")
+    # st.title("Customer Churn Prediction App")
+    st.markdown("""
+            <p style="font-size: 32px; color: #023047;font-weight: bold">Customer Churn Prediction App</p>
+            """, unsafe_allow_html=True)
     st.caption("This app is created by Algowizard Team for Final Project of Data Science Bootcamp")
 
     menu = ["Overview","Machine Learning"]
