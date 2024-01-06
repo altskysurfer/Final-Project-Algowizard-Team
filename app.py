@@ -11,19 +11,28 @@ def main():
     # stc.html(html_temp)
     # st.title("Customer Churn Prediction App")
     st.markdown("""
-            <p style="font-size: 32px; color: #023047;font-weight: bold">Customer Churn Prediction App</p>
+            <p style="font-size: 44px; color: #023047;font-weight: bold">Customer Churn Prediction App</p>
             """, unsafe_allow_html=True)
-    st.caption("This app is created by Algowizard Team for Final Project of Data Science Bootcamp")
+    st.markdown("This app is created by Algowizard Team for Final Project of Data Science Bootcamp")
+
+    # st.markdown("""
+    #     <style>
+    #     [data-testid="stSidebar"] .st-emotion-cache-12oirzr  {
+    #     color: #ff8040;  /* Adjust color as desired */
+    #     }
+    #     </style>
+    #     """, unsafe_allow_html=True)
 
     with st.sidebar:
         st.image("algowizard.jpg")
+
         menu = ["Overview","Machine Learning"]
         choice = st.sidebar.selectbox("Menu", menu)
 
 
     if choice == "Overview":
         st.header("Overview")
-        st.caption("Aplikasi prediksi churn memanfaatkan pembelajaran mesin dan kecerdasan buatan untuk menganalisis data pelanggan dan mengidentifikasi mereka yang berisiko pergi. Hal ini memungkinkan bisnis untuk secara proaktif melibatkan pelanggan ini dengan intervensi yang ditargetkan dan strategi retensi, meminimalkan churn dan meningkatkan nilai umur pelanggan.")
+        st.markdown("Aplikasi prediksi churn memanfaatkan pembelajaran mesin dan kecerdasan buatan untuk menganalisis data pelanggan dan mengidentifikasi mereka yang berisiko pergi. Hal ini memungkinkan bisnis untuk secara proaktif melibatkan pelanggan ini dengan intervensi yang ditargetkan dan strategi retensi, meminimalkan churn dan meningkatkan nilai umur pelanggan.")
 
         st.markdown("""
             <p style="font-size: 16px; font-weight: bold">Sekilas tentang Dataset yang digunakan</p>
@@ -129,16 +138,16 @@ def main():
         st.markdown("""
             <p style="font-size: 16px; font-weight: bold">Deskripsi Dataset</p>
             """, unsafe_allow_html=True)
-        st.caption(text1)
+        st.markdown(text1)
         st.image("output1.png")
-        st.caption(text2)
+        st.markdown(text2)
         st.image("output2.png")
-        st.caption(text3)
+        st.markdown(text3)
         st.markdown("""
             <p style="font-size: 16px; font-weight: bold">Mengatasi Imbalance Dataset</p>
             """, unsafe_allow_html=True)
         st.image("output3.png")
-        st.caption(text4)
+        st.markdown(text4)
 
         st.markdown("""
             <p style="font-size: 16px; font-weight: bold">Mencari Model Terbaik</p>
