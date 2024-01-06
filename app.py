@@ -15,8 +15,11 @@ def main():
             """, unsafe_allow_html=True)
     st.caption("This app is created by Algowizard Team for Final Project of Data Science Bootcamp")
 
-    menu = ["Overview","Machine Learning"]
-    choice = st.sidebar.selectbox("Menu", menu)
+    with st.sidebar:
+        st.image("algowizard.jpg")
+        menu = ["Overview","Machine Learning"]
+        choice = st.sidebar.selectbox("Menu", menu)
+
 
     if choice == "Overview":
         st.header("Overview")
