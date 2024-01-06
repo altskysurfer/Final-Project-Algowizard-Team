@@ -13,15 +13,7 @@ def main():
     st.markdown("""
             <p style="font-size: 44px; color: #023047;font-weight: bold">Customer Churn Prediction App</p>
             """, unsafe_allow_html=True)
-    st.markdown("This app is created by Algowizard Team for Final Project of Data Science Bootcamp")
-
-    # st.markdown("""
-    #     <style>
-    #     [data-testid="stSidebar"] .st-emotion-cache-12oirzr  {
-    #     color: #ff8040;  /* Adjust color as desired */
-    #     }
-    #     </style>
-    #     """, unsafe_allow_html=True)
+    st.markdown("Aplikasi ini dibuat oleh tim Algowizard untuk Final Project Data Science Bootcamp Digital Skola")
 
     with st.sidebar:
         st.image("algowizard.jpg")
@@ -49,12 +41,13 @@ def main():
                 - Dataset ini terdiri dari total 10.000 baris (entries) dengan rentang indeks baris dari 0 hingga 9999, dan terdapat 7 kolom.
                 - Variabel independen melibatkan Gender, Age, CreditScore, EstimatedSalary, dan HasCrCard, yang berisi informasi tentang pelanggan.
                 - Variabel dependen adalah Exited, yang menunjukkan apakah pelanggan tersebut telah meninggalkan layanan.
+                - CustomerId merupakan data integer
 
                 Fitur:
 
                 - CustomerId: ID unik untuk setiap pelanggan.
                 - Gender: Jenis kelamin pelanggan (Female / Male).
-                - Age: Usia pelanggan
+                - Age: Usia pelanggan.
                 - CreditScore: Skor kredit pelanggan.
                 - EstimatedSalary: Perkiraan gaji pelanggan.
                 - HasCrCard: Menunjukkan apakah pelanggan memiliki kartu kredit (1 untuk ya, 0 untuk tidak).
@@ -63,13 +56,12 @@ def main():
         
         text2 = """
                 1. **Distribusi variabel dependen 'Exited' terhadap variabel independen 'Gender':**
-                - Female memiliki jumlah yang lebih rendah pada kategori '1' (Exited), yang sesuai dengan rendahnya nilai KDE pada kategori tertentu.
+                - Female memiliki jumlah yang lebih tinggi pada kategori '1' (Exited), yang sesuai dengan rendahnya nilai KDE pada kategori tertentu.
                 - Male memiliki jumlah yang lebih tinggi pada kategori '0' (Not Exited), yang sesuai dengan tingginya nilai KDE pada kategori tertentu.
 
                 2. **Distribusi variabel dependen 'Exited' terhadap variabel independen 'Age':**
-                - Terdapat peningkatan jumlah Exited dari rentang usia '0-18' hingga '50+', dengan puncaknya pada kategori '50+'. (terlihat dari bentuk distribusi normal yang miring ke kanan / right-skewed)
-                - Distribusi yang miring ke kanan mencerminkan bahwa sebagian besar nasabah berada di kelompok usia yang lebih muda. Fakta bahwa rentang usia '19-35' memiliki jumlah Exited yang tinggi menunjukkan bahwa di antara nasabah muda, tingkat churn cenderung lebih tinggi.
-                - Distribusi yang miring ke kanan dapat menunjukkan bahwa meskipun kebanyakan nasabah berada di kelompok usia yang lebih muda, ada juga sejumlah nasabah yang lebih tua di rentang '36-50'. Jumlah Exited yang tinggi di rentang ini menunjukkan bahwa bahkan di antara nasabah yang lebih tua, tingkat churn tetap signifikan.
+                - Mayoritas pelanggan berada dalam kelompok usia 30 - 40 dan 40 - 50.
+                - Kelompok usia 70 - 80 dan 80 - 90 memiliki jumlah pelanggan yang lebih sedikit.
 
                 3. **Distribusi variabel dependen 'Exited' terhadap variabel independen 'CreditScore':**
                 - Bentuk distribusi normal menunjukkan bahwa sebagian besar nasabah memiliki CreditScore yang berpusat di sekitar mean.
@@ -84,55 +76,53 @@ def main():
                 - Pemegang kartu kredit (HasCrCard=1) memiliki jumlah Exited yang lebih tinggi dibandingkan dengan yang bukan pemegang kartu kredit.
                 """
         text3 = """
-                1. **Korelasi antara Umur (Age) dan Exited:**
-                - Korelasi positif sebesar 0.36 menunjukkan bahwa ada hubungan yang moderat antara usia nasabah dan kecenderungan untuk keluar dari layanan.
-                - Ini dapat diartikan bahwa semakin tua seseorang, semakin cenderung mereka bertahan dalam layanan.
-
-                2. **Korelasi antara Jenis Kelamin (Gender) dan Exited:**
-                - Korelasi negatif sebesar -0.31 menunjukkan bahwa terdapat hubungan cukup negatif antara jenis kelamin (laki-laki) dan kecenderungan untuk keluar dari layanan.
-                - Hal ini dapat diartikan bahwa nasabah perempuan mungkin cenderung lebih loyal terhadap layanan dibandingkan dengan nasabah laki-laki.
-
-                3. **Korelasi antara Kepemilikan Kartu Kredit (HasCrCard) dan Exited:**
-                - Korelasi negatif sebesar -0.17 menunjukkan bahwa kepemilikan kartu kredit memiliki pengaruh cukup negatif terhadap kecenderungan keluar dari layanan.
-                - Artinya, nasabah yang memiliki kartu kredit cenderung lebih setia terhadap layanan.
-
-                4. **Korelasi antara Skor Kredit (CreditScore) dan Exited:**
-                - Korelasi negatif sebesar -0.04 menunjukkan bahwa terdapat hubungan yang kurang kuat antara skor kredit dan kecenderungan keluar dari layanan.
-                - Hal ini mungkin menandakan bahwa nasabah dengan skor kredit yang lebih tinggi memiliki kecenderungan yang sedikit lebih rendah untuk keluar dari layanan.
-
-                5. **Korelasi antara Estimasi Pendapatan (EstimatedSalary) dan Exited:**
-                - Korelasi positif yang sangat lemah (0.0075) menunjukkan bahwa tidak ada korelasi yang signifikan antara estimasi pendapatan dan kecenderungan keluar dari layanan.
-                - Dengan kata lain, estimasi pendapatan tidak menjadi faktor utama yang mempengaruhi keputusan nasabah untuk keluar dari layanan.
-
-                6. **Korelasi antara Kepemilikan Kartu Kredit (HasCrCard) dan Jenis Kelamin (Gender):**
-                - Korelasi positif sebesar 0.078 menunjukkan bahwa ada hubungan positif yang kurang kuat antara kepemilikan kartu kredit dan jenis kelamin laki-laki.
-                - Artinya, laki-laki mungkin sedikit lebih mungkin memiliki kartu kredit.
-
-                """
-        
-        text4 = """
                 1. **Gender:**
-                - Sebelum SMOTE, Female memiliki jumlah yang lebih rendah pada kategori '1' (Exited) dibandingkan dengan Male.
-                - Setelah SMOTE, perbedaan jumlah antara Female dan Male pada kategori '1' (Exited) menurun, tetapi masih terdapat perbedaan signifikan.
+                - Sebelum SMOTE, Female memiliki jumlah yang lebih tinggi pada kategori '1' (Exited) dibandingkan dengan Male.
+                - Setelah SMOTE, perbedaan jumlah antara Female dan Male pada kategori '1' (Exited) masih lebih tinggi.
 
                 2. **Age:**
-                - Sebelum SMOTE, kategori umur '19-35' memiliki jumlah Exited yang lebih tinggi dibandingkan dengan '0-18'.
-                - Setelah SMOTE, terdapat peningkatan jumlah Exited pada kategori '0-18', namun kategori '19-35' masih memiliki jumlah Exited yang tinggi.
+                - Sebelum SMOTE, kategori umur '30 - 50' memiliki jumlah Exited yang tinggi.
+                - Setelah SMOTE, terdapat peningkatan jumlah Exited pada kategori '30 - 50'.
 
                 3. **CreditScore:**
                 - Sebelum SMOTE, skor kredit di bawah rata-rata memiliki jumlah Exited yang lebih rendah dibandingkan dengan skor kredit di atas rata-rata.
-                - Setelah SMOTE, perbedaan jumlah Exited antara skor kredit di bawah rata-rata dan skor kredit di atas rata-rata menurun, tetapi skor kredit di bawah rata-rata masih memiliki jumlah Exited yang lebih rendah.
+                - Setelah SMOTE, terjadi perbedaan yang sangat signifikan pada 'Exited = 1' sedangkan yang 'Exited = 0' tetap ada perubahan namun tidak signifikan.
 
                 4. **EstimatedSalary:**
                 - Sebelum SMOTE, kategori pendapatan di bawah rata-rata dan di atas rata-rata memiliki jumlah Exited yang cukup seimbang.
-                - Setelah SMOTE, perbedaan jumlah Exited antara kategori pendapatan di bawah rata-rata dan di atas rata-rata tetap seimbang.
+                - Setelah SMOTE, terjadi perbedaan yang sangat signifikan pada 'Exited = 1' sedangkan yang 'Exited = 0' tetap ada perubahan namun tidak signifikan.
 
                 5. **HasCrCard:**
                 - Sebelum SMOTE, terdapat perbedaan yang signifikan antara pemegang kartu kredit (HasCrCard=1) dan bukan pemegang kartu kredit (HasCrCard=0) dalam hal jumlah Exited.
-                - Setelah SMOTE, perbedaan jumlah Exited antara pemegang kartu kredit dan bukan pemegang kartu kredit menurun, tetapi pemegang kartu kredit (HasCrCard=1) masih memiliki jumlah Exited yang lebih tinggi.
+                - Setelah SMOTE, terjadi perbedaan yang sangat signifikan pada 'Exited = 1' sedangkan yang 'Exited = 0' tetap ada perubahan namun tidak signifikan.
 
                 SMOTE berhasil menyeimbangkan jumlah sampel antara kelas Exited (1) dan kelas Not Exited (0), mengurangi ketidakseimbangan kelas yang dapat memengaruhi kinerja model klasifikasi.
+                """
+        
+        text4 = """
+                1. **Korelasi antara Umur (Age) dan Exited:**
+                - Korelasi positif menunjukkan bahwa ada hubungan yang moderat antara usia nasabah dan kecenderungan untuk keluar dari layanan.
+                - Ini dapat diartikan bahwa semakin tua seseorang, semakin cenderung mereka bertahan dalam layanan.
 
+                2. **Korelasi antara Jenis Kelamin (Gender) dan Exited:**
+                - Korelasi negatif menunjukkan bahwa terdapat hubungan cukup negatif antara jenis kelamin (laki-laki) dan kecenderungan untuk keluar dari layanan.
+                - Hal ini dapat diartikan bahwa nasabah perempuan mungkin cenderung lebih loyal terhadap layanan dibandingkan dengan nasabah laki-laki.
+
+                3. **Korelasi antara Kepemilikan Kartu Kredit (HasCrCard) dan Exited:**
+                - Korelasi negatif menunjukkan bahwa kepemilikan kartu kredit memiliki pengaruh cukup negatif terhadap kecenderungan keluar dari layanan.
+                - Artinya, nasabah yang memiliki kartu kredit cenderung lebih setia terhadap layanan.
+
+                4. **Korelasi antara Skor Kredit (CreditScore) dan Exited:**
+                - Korelasi negatif menunjukkan bahwa terdapat hubungan yang kurang kuat antara skor kredit dan kecenderungan keluar dari layanan.
+                - Hal ini mungkin menandakan bahwa nasabah dengan skor kredit yang lebih tinggi memiliki kecenderungan yang sedikit lebih rendah untuk keluar dari layanan.
+
+                5. **Korelasi antara Estimasi Pendapatan (EstimatedSalary) dan Exited:**
+                - Korelasi positif yang sangat lemah menunjukkan bahwa tidak ada korelasi yang signifikan antara estimasi pendapatan dan kecenderungan keluar dari layanan.
+                - Dengan kata lain, estimasi pendapatan tidak menjadi faktor utama yang mempengaruhi keputusan nasabah untuk keluar dari layanan.
+
+                5. **Korelasi antara Kepemilikan Kartu Kredit (HasCrCard) dan Jenis Kelamin (Gender):**
+                - Korelasi positif menunjukkan bahwa ada hubungan positif yang kurang kuat antara kepemilikan kartu kredit dan jenis kelamin laki-laki.
+                - Artinya, laki-laki mungkin sedikit lebih mungkin memiliki kartu kredit.
                 """
 
         st.markdown("""
@@ -149,23 +139,9 @@ def main():
         st.image("output3.png")
         st.markdown(text4)
 
-        st.markdown("""
-            <p style="font-size: 16px; font-weight: bold">Mencari Model Terbaik</p>
-            """, unsafe_allow_html=True)
-        training_result = pd.read_csv("training_result.csv")
-        training_result = training_result.drop('Unnamed: 0',axis=1)
-        st.table(training_result)
-
-
     elif choice == "Machine Learning":
         st.header("Prediction Model")
         run_ml_app()
-
-    col1, col2, col3 = st.columns([1, 10, 1])  # Center column takes up most of the width
-    with col2:
-        images = ["1. Ola.png", "2. July.png", "3. Faza.png","4. Timmy.png",
-              "5. Kemas.png", "6. Eko.png", "7. Osha.png"]
-        # st.image(images, width=80)  # Set width for each image
 
 def run_ml_app():
 
@@ -192,15 +168,13 @@ def run_ml_app():
         else:
             st.warning(f'You have {result} for the loan')
 
-
 def predict(gender,age,credit_score,estimated_salary,has_credit_card):
     #processing user input
     gen = 0 if gender == 'Male' else 1
     cre = 0 if has_credit_card == 'No' else 1
 
     #Making prediction
-    prediction = Final_Model.predict([[gen, cre, age, credit_score,
-                                               estimated_salary]])
+    prediction = Final_Model.predict([[gen, cre, age, credit_score,estimated_salary]])
     result = 'Stayed' if prediction == 0 else 'Exited'
 
     return result
